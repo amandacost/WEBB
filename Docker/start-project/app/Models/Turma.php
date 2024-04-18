@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Turma extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
+    public function curso() {
+        return $this->belongsTo('App\Models\Curso');
+    }
 }

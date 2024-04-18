@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Eixo extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
+    public function curso() {
+        return $this->hasMany('App\Models\Curso');
+    }
 }
