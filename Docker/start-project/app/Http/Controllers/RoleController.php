@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TurmaController extends Controller
+class RoleController extends Controller
 {
     protected $repository;
    
     public function __construct(){
-       $this->repository = new TurmaRepository();
+       $this->repository = new RoleRepository();
     }
 
     public function index()
