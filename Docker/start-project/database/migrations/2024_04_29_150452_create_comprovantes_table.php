@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('declaracoes', function (Blueprint $table) {
+        Schema::create('comprovantes', function (Blueprint $table) {
             $table->id();
-            $table->string('hash');
-            $table->datetime('data');
+            $table->float('horas');
+            $table->string('atividade');
+            $table->unsignedBigInteger('categoria_id');
             $table->unsignedBigInteger('aluno_id');
-            $table->unsignedBigInteger('comprovante_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->foreign('aluno_id')->references('id')->on('alunos');
-            $table->foreign('comprovante_id')->references('id')->on('comprovantes');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,7 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('declaracoes');
+        Schema::dropIfExists('comprovantes');
     }
 };
-

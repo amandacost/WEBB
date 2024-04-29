@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
-            $table->sting('nome');
-            $table->varchar('cpf');
-            $table->string('email');
-            $table->varchar('password');
-            $table->unsignedBigInteger('user_id');
+            $table->string('nome');
+            $table->string('cpf')->unique();
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('curso_id');
             $table->unsignedBigInteger('turma_id');
             $table->foreign('user_id')->references('id')->on('users');
